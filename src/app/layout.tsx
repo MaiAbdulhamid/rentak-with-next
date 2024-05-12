@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_Arabic } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: '--font-noto-sans',
+ });
+
+const generalSans = localFont({
+  src: "./fonts/GeneralSans-Variable.woff2",
+  variable: '--font-general-sans',
+  adjustFontFallback: false,
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${generalSans.variable} ${notoSans.variable} font-sans`}>{children}</body>
     </html>
   );
 }
