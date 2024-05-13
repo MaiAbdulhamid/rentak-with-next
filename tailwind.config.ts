@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
   content: [
@@ -13,8 +13,7 @@ const config = {
         sans: [
           "var(--font-general-sans)",
           "var(--font-noto-sans)",
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-          ...defaultTheme.theme.fontFamily.sans,
+          ...fontFamily.sans,
         ],
       },
       backgroundImage: {
