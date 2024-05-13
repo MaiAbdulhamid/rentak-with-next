@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config = {
   content: [
@@ -10,7 +10,12 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-general-sans)', 'var(--font-noto-sans)', ...defaultTheme.theme.fontFamily.sans],
+        sans: [
+          "var(--font-general-sans)",
+          "var(--font-noto-sans)",
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          ...defaultTheme.theme.fontFamily.sans,
+        ],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

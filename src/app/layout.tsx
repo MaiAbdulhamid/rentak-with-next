@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
+import "./globals.css";
+
+import { type Metadata } from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
 
 const notoSans = Noto_Sans_Arabic({
   subsets: ["arabic"],
-  variable: '--font-noto-sans',
- });
+  variable: "--font-noto-sans",
+});
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Variable.woff2",
-  variable: '--font-general-sans',
+  variable: "--font-general-sans",
   adjustFontFallback: false,
 });
 
@@ -26,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${generalSans.variable} ${notoSans.variable} font-sans`}>{children}</body>
+      <body
+        className={`${generalSans.variable} ${notoSans.variable} font-sans`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
