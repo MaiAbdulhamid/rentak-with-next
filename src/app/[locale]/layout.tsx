@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
+import Navbar from "@/components/navbar";
 import useTextDirection from "@/hooks/useTextDirection";
 
 const notoSans = Noto_Sans_Arabic({
@@ -40,6 +41,7 @@ export default async function RootLayout({
         className={`${generalSans.variable} ${notoSans.variable} font-sans`}
       >
         <NextIntlClientProvider messages={messages}>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>
