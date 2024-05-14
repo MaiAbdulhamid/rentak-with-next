@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/navbar";
 import useTextDirection from "@/hooks/useTextDirection";
 
@@ -15,7 +16,7 @@ const notoSans = Noto_Sans_Arabic({
 });
 
 const generalSans = localFont({
-  src: "./fonts/GeneralSans-Variable.woff2",
+  src: "./assets/fonts/GeneralSans-Variable.woff2",
   variable: "--font-general-sans",
   adjustFontFallback: false,
 });
@@ -43,6 +44,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
