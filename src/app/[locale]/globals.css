@@ -354,25 +354,18 @@ body {
   }
 
   #topnav .navigation-menu > li {
-    @apply relative;
+    @apply relative block float-start;
     margin: 0 10px;
-    @apply block;
-
-    @apply float-start;
   }
 
   #topnav .navigation-menu > li > a {
-    @apply block bg-transparent font-medium;
+    @apply block bg-transparent font-medium text-gray-400;
     padding-left: 15px;
     padding-right: 15px;
     font-family: var(--font-league_Spartan);
     font-size: 17px;
     line-height: 1.5rem;
     letter-spacing: 1px;
-
-    --tw-text-opacity: 1;
-
-    color: rgb(22 28 45 / var(--tw-text-opacity));
   }
 
   #topnav .navigation-menu > li > a:hover,
