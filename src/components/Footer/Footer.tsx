@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="relative py-16">
               {/* <!-- Subscribe --> */}
               <div className="relative w-full">
-                <div className="relative -top-40 overflow-hidden rounded-xl bg-white px-6 py-10 shadow-lg lg:px-8 dark:bg-slate-900 dark:shadow-gray-700">
+                {/* <div className="relative -top-40 overflow-hidden rounded-xl bg-white px-6 py-10 shadow-lg lg:px-8 dark:bg-slate-900 dark:shadow-gray-700">
                   <div className="grid grid-cols-1 items-center gap-[30px] md:grid-cols-2">
                     <div className="z-1 text-center md:text-start">
                       <h3 className="text-2xl font-medium leading-normal text-black md:text-3xl md:leading-normal dark:text-white">
@@ -43,19 +43,13 @@ export default function Footer() {
                   </div>
 
                   <div className="absolute -start-5 -top-5">
-                    {/* <FiMail
-                      className=" text-black/5 ltr:-rotate-45 rtl:rotate-45 dark:text-white/5"
-                      style={{ width: "150px", height: "150px" }}
-                    /> */}
+ 
                   </div>
 
                   <div className="absolute -bottom-5 -end-5">
-                    {/* <BsPencil
-                      className=" text-black/5 rtl:-rotate-90 dark:text-white/5"
-                      style={{ width: "150px", height: "150px" }}
-                    /> */}
+
                   </div>
-                </div>
+                </div> */}
 
                 <div className="-mt-24 grid grid-cols-1 gap-[30px] md:grid-cols-12">
                   <div className="md:col-span-12 lg:col-span-4">
