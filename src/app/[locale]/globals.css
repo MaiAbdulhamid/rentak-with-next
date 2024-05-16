@@ -103,8 +103,7 @@ body {
   }
 
   .btn.btn-icon.btn-sm {
-    @apply h-7;
-    width: 1.75rem;
+    @apply size-8;
   }
 
   .btn.btn-link {
@@ -115,8 +114,7 @@ body {
   }
 
   .btn.btn-link::after {
-    inset-inline: 0 0;
-    @apply absolute bottom-0 h-px w-0 transition-all duration-500;
+    @apply absolute bottom-0 inset-x-0 h-px w-0 transition-all duration-500;
 
     --tw-content: "";
 
@@ -124,9 +122,8 @@ body {
   }
 
   .btn.btn-link:hover::after {
-    inset-inline-end: auto;
     content: var(--tw-content);
-    width: 100%;
+    @apply w-full end-auto;
   }
 
   /********************************   */
@@ -135,26 +132,7 @@ body {
 
   /* =============================== */
   #topnav {
-    inset-inline: 0 0;
-    z-index: 999;
-    @apply fixed top-0 border-0 duration-500 transition-all bg-transparent;
-  }
-
-  #topnav .logo {
-    @apply float-start text-black;
-  }
-
-  #topnav .logo .l-dark {
-    @apply hidden;
-  }
-
-  #topnav .logo .l-light {
-    @apply inline-block;
-  }
-
-  #topnav .logo:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    @apply fixed inset-x-0 top-0 border-0 duration-500 transition-all bg-transparent z-50;
   }
 
   #topnav .has-submenu {
@@ -174,8 +152,8 @@ body {
   }
 
   #topnav .has-submenu .submenu .submenu-arrow {
+    @apply absolute inline-block ltr:-rotate-45 rtl:rotate-[135deg];
     border-width: 0 0.125rem 0.125rem 0;
-    @apply absolute inline-block;
     inset-inline-end: 1.25rem;
     top: 0.8125rem;
     border-radius: 0.5px;
@@ -184,14 +162,6 @@ body {
 
     border-color: rgb(22 28 45 / var(--tw-border-opacity));
     padding: 2px;
-  }
-
-  :is([dir="ltr"] #topnav .has-submenu .submenu .submenu-arrow) {
-    @apply -rotate-45;
-  }
-
-  :is([dir="rtl"] #topnav .has-submenu .submenu .submenu-arrow) {
-    @apply rotate-[135deg];
   }
 
   #topnav .has-submenu .submenu .has-submenu:hover > .submenu-arrow {
@@ -232,15 +202,11 @@ body {
   }
 
   #topnav .navbar-toggle span {
-    transition: -webkit-transform 0.5s ease;
     transition: transform 0.5s ease;
-    transition:
-      transform 0.5s ease,
-      -webkit-transform 0.5s ease;
     margin-bottom: 5px;
     @apply block;
     height: 2px;
-    width: 100%;
+    @apply w-full;
 
     --tw-bg-opacity: 1;
 
@@ -251,102 +217,10 @@ body {
     margin-bottom: 0;
   }
 
-  #topnav .navbar-toggle.open span {
-    @apply absolute;
-  }
-
-  #topnav .navbar-toggle.open span:first-child {
-    top: 6px;
-
-    @apply rotate-45;
-  }
-
-  #topnav .navbar-toggle.open span:nth-child(2) {
-    visibility: hidden;
-  }
-
-  #topnav .navbar-toggle.open span:last-child {
-    top: 6px;
-    width: 100%;
-
-    @apply -rotate-45;
-  }
-
-  #topnav .navbar-toggle.open span:hover {
-    @apply bg-blue-600;
-  }
-
   #topnav .navbar-toggle:hover,
   #topnav .navbar-toggle:focus,
   #topnav .navbar-toggle .navigation-menu > li > a:hover {
     @apply bg-transparent;
-  }
-
-  #topnav .buy-button {
-    line-height: 74px;
-
-    @apply float-end;
-  }
-
-  #topnav .buy-button > li {
-    line-height: initial;
-  }
-
-  #topnav .buy-button .login-btn-primary,
-  #topnav .buy-button .btn-icon-dark {
-    @apply hidden;
-  }
-
-  #topnav .buy-button .login-btn-light,
-  #topnav .buy-button .btn-icon-light {
-    @apply inline-block;
-  }
-
-  #topnav .buy-button .search-bar .menu-search form {
-    @apply relative;
-  }
-
-  #topnav .buy-button .search-bar .searchform::after {
-    pointer-events: none !important;
-    @apply !absolute;
-    inset-inline-end: 14px !important;
-    top: 14px !important;
-    font-size: 1.25rem !important;
-    content: var(--tw-content) !important;
-    line-height: 1.25rem !important;
-  }
-
-  #topnav .buy-button .search-bar .searchform input[type="text"] {
-    @apply !block;
-    height: 2.75rem !important;
-    padding-top: 0.625rem !important;
-    padding-bottom: 0.625rem !important;
-    padding-inline: 0.75rem 42px !important;
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-
-    --tw-shadow: 0 0 #0000 !important;
-    --tw-shadow-colored: 0 0 #0000 !important;
-
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-    outline: 2px solid transparent !important;
-    outline-offset: 2px !important;
-  }
-
-  #topnav .buy-button .search-bar .searchform input[type="submit"] {
-    @apply hidden;
-  }
-
-  #topnav .buy-button .search-bar .searchform::after {
-    content: "󰍉";
-    font-family: "Material Design Icons";
-  }
-
-  #topnav .buy-button .dropdown .dropdown-toggle::after,
-  #topnav .buy-menu-btn .dropdown .dropdown-toggle::after {
-    content: var(--tw-content);
-    @apply hidden;
   }
 
   #topnav .navigation-menu {
@@ -359,13 +233,11 @@ body {
   }
 
   #topnav .navigation-menu > li > a {
-    @apply block bg-transparent font-medium text-gray-400;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-family: var(--font-league_Spartan);
-    font-size: 17px;
-    line-height: 1.5rem;
-    letter-spacing: 1px;
+    @apply block bg-transparent font-medium text-gray-400 text-lg px-4;
+  }
+
+  #topnav.nav-sticky .navigation-menu > li > a {
+    @apply text-gray-800;
   }
 
   #topnav .navigation-menu > li > a:hover,
@@ -376,18 +248,6 @@ body {
   #topnav .navigation-menu > li:hover > a,
   #topnav .navigation-menu > li.active > a {
     @apply !text-blue-600;
-  }
-
-  #topnav .navigation-menu > li .submenu.megamenu li .megamenu-head {
-    white-space: nowrap !important;
-    padding: 10px 1.25rem !important;
-    font-size: 0.75rem !important;
-    line-height: 1rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.04em !important;
-
-    @apply !text-slate-400;
   }
 
   #topnav .navigation-menu > li .submenu li {
@@ -408,10 +268,6 @@ body {
 
     border-color: rgb(22 28 45 / var(--tw-border-opacity));
     padding: 2px;
-  }
-
-  #topnav .menu-extras {
-    @apply float-start;
   }
 
   #topnav.scroll {
@@ -438,14 +294,6 @@ body {
   #topnav.scroll .navigation-menu > li:hover > .menu-arrow,
   #topnav.scroll .navigation-menu > li.active > .menu-arrow {
     @apply border-blue-600;
-  }
-
-  #topnav.defaultscroll.dark-menubar .logo {
-    line-height: 70px;
-  }
-
-  #topnav.defaultscroll.scroll .logo {
-    line-height: 62px;
   }
 
   #topnav.nav-sticky {
@@ -478,50 +326,6 @@ body {
     border-color: rgb(22 28 45 / var(--tw-border-opacity));
   }
 
-  #topnav.nav-sticky.tagline-height {
-    @apply !top-0;
-  }
-
-  #topnav.nav-sticky .buy-button .login-btn-primary,
-  #topnav.nav-sticky .buy-button .btn-icon-dark {
-    @apply inline-block;
-  }
-
-  #topnav.nav-sticky .buy-button .login-btn-light,
-  #topnav.nav-sticky .buy-button .btn-icon-light {
-    @apply hidden;
-  }
-
-  #topnav.nav-sticky .logo .l-dark {
-    @apply inline-block;
-  }
-
-  #topnav.nav-sticky .logo .l-light {
-    @apply hidden;
-  }
-
-  .logo {
-    @apply font-semibold;
-    margin-inline-end: 15px;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-size: 24px;
-    line-height: 68px;
-    letter-spacing: 1px;
-  }
-
-  @media (width >= 1025px) {
-    #topnav .navigation-menu > li .submenu.megamenu {
-      width: 1116px !important;
-    }
-  }
-
-  @media screen and (width <= 1024px) and (width >= 992px) {
-    #topnav .navigation-menu > li .submenu.megamenu {
-      width: 936px !important;
-    }
-  }
-
   @media (width >= 992px) {
     #topnav .navigation-menu {
       @apply flex flex-wrap justify-center;
@@ -549,7 +353,7 @@ body {
     #topnav .navigation-menu > li .submenu li a {
       @apply block;
       transition: all 0.3s;
-      clear: both;
+      @apply clear-both;
       white-space: nowrap;
       padding: 10px 1.25rem;
       font-size: 16px;
@@ -569,34 +373,6 @@ body {
     #topnav .navigation-menu > li .submenu li ul {
       @apply m-0 list-none;
       padding-inline-start: 0;
-    }
-
-    #topnav .navigation-menu > li .submenu.megamenu {
-      @apply fixed flex;
-      inset-inline-start: 50%;
-      top: auto;
-      white-space: nowrap;
-    }
-
-    :is([dir="ltr"] #topnav .navigation-menu > li .submenu.megamenu) {
-      @apply -translate-x-1/2;
-    }
-
-    :is([dir="rtl"] #topnav .navigation-menu > li .submenu.megamenu) {
-      @apply translate-x-1/2;
-    }
-
-    #topnav .navigation-menu > li .submenu.megamenu > li {
-      width: 20%;
-      overflow: hidden;
-      vertical-align: top;
-    }
-
-    #topnav .navigation-menu > li .submenu.megamenu > li .submenu {
-      @apply top-0;
-      inset-inline-start: 100%;
-      margin-inline-start: 10px;
-      margin-top: -1px;
     }
 
     #topnav .navigation-menu > li .submenu > li .submenu {
@@ -664,11 +440,6 @@ body {
       @apply !border-white;
     }
 
-    #topnav .buy-button {
-      margin-inline-start: 15px;
-      padding-inline-start: 15px;
-    }
-
     #topnav .navbar-toggle {
       @apply hidden;
     }
@@ -696,18 +467,6 @@ body {
     #topnav {
       @apply bg-white shadow;
       min-height: 74px;
-    }
-
-    #topnav .logo .l-dark {
-      @apply !inline-block;
-    }
-
-    #topnav .logo .l-light {
-      @apply !hidden;
-    }
-
-    #topnav .container {
-      width: auto;
     }
 
     #topnav #navigation {
@@ -742,28 +501,6 @@ body {
       color: rgb(22 28 45 / var(--tw-text-opacity)) !important;
     }
 
-    #topnav .navigation-menu > li .submenu.megamenu li .megamenu-head {
-      padding: 7px 15px;
-    }
-
-    #topnav .navigation-menu > li .submenu.megamenu > li > ul {
-      @apply list-none;
-      padding-inline-start: 0;
-    }
-
-    #topnav .navigation-menu > li .submenu.megamenu > li > ul > li > span {
-      @apply relative block;
-      padding: 10px 15px;
-      font-size: 0.75rem;
-      line-height: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-
-      --tw-text-opacity: 1;
-
-      color: rgb(226 232 240 / var(--tw-text-opacity));
-    }
-
     #topnav .navigation-menu > li .submenu.open {
       @apply block;
     }
@@ -796,22 +533,8 @@ body {
       @apply text-blue-600;
     }
 
-    #topnav .menu-extras .menu-item {
-      @apply border-gray-200;
-    }
-
     #topnav .navbar-header {
       @apply float-start;
-    }
-
-    #topnav .buy-button .login-btn-primary,
-    #topnav .buy-button .btn-icon-dark {
-      @apply inline-block !important;
-    }
-
-    #topnav .buy-button .login-btn-light,
-    #topnav .buy-button .btn-icon-light {
-      @apply hidden;
     }
 
     #topnav .has-submenu .submenu .submenu-arrow {
@@ -830,7 +553,7 @@ body {
       inset-inline-start: 0;
       @apply hidden;
       height: auto;
-      width: 100%;
+      @apply w-full;
       overflow: auto;
 
       @apply bg-white;
@@ -885,22 +608,10 @@ body {
     }
   }
 
-  @media (width <= 425px) {
-    #topnav .buy-menu-btn {
-      @apply !block;
-      margin: 0 10px !important;
-      padding: 10px 1.25rem !important;
-    }
-
-    #topnav .buy-menu-btn .dropdown .dropdown-menu.show {
-      transform: translate3d(0, -54px, 0) !important;
-    }
-  }
-
   .tagline {
     @apply absolute;
     z-index: 99;
-    width: 100%;
+    @apply w-full;
     padding: 13px 0;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -992,9 +703,6 @@ body {
   /*             Helper            */
 
   /* =============================== */
-  .container {
-    @apply relative;
-  }
 
   /* Preloader */
   #preloader {
@@ -1060,7 +768,7 @@ body {
 
   .shape > svg {
     height: auto;
-    width: 100%;
+    @apply w-full;
     transform: scale(2);
     transform-origin: top center;
   }
@@ -1449,7 +1157,7 @@ body {
 
   .choices__list--dropdown,
   .choices[data-type*="select-one"] .choices__input {
-    z-index: 999;
+    @apply z-50;
     border-radius: 5px;
     @apply border-0;
     @apply bg-white;
@@ -1575,7 +1283,7 @@ body {
   /* =============================== */
   .form-input {
     @apply h-10;
-    width: 100%;
+    @apply w-full;
     border-radius: 0.25rem;
     border-width: 1px;
     border-color: inherit;
@@ -1616,10 +1324,10 @@ body {
   }
 
   #ajaxsuccess {
-    clear: both;
+    @apply clear-both;
     margin: 0.5rem 0;
     @apply hidden;
-    width: 100%;
+    @apply w-full;
     @apply text-lg;
   }
 
@@ -1650,7 +1358,7 @@ body {
   /****************   */
   .subcribe-form form input {
     height: 50px;
-    width: 100%;
+    @apply w-full;
     padding-top: 1rem;
     padding-inline: 1.5rem 10rem;
     padding-bottom: 1rem;
@@ -1741,7 +1449,7 @@ body {
   }
 
   .css-1nmdiq5-menu {
-    z-index: 999;
+    @apply z-50;
     border-radius: 5px;
     border-style: none !important;
 

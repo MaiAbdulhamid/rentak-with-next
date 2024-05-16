@@ -75,50 +75,13 @@ export default function Navbar({ navClass, topnavClass }: NavbarProps) {
     <React.Fragment>
       <nav
         id="topnav"
-        className={`${topNavbar ? "nav-sticky" : ""} ${topnavClass ? topnavClass : ""} defaultscroll is-sticky`}
+        className={`${topNavbar ? "nav-sticky" : ""} ${topnavClass ? topnavClass : ""}`}
       >
-        <div
-          className={
-            topnavClass !== "" && topnavClass !== undefined
-              ? "container-fluid px-3 md:px-8"
-              : "container mx-auto"
-          }
-        >
-          {/* <!-- Logo container--> */}
-          {navClass === "" || navClass === undefined ? (
-            <Link className="logo" href="/">
-              <Image
-                src="/images/Logo.png"
-                className="inline-block"
-                alt=""
-                width={98}
-                height={24}
-              />
-            </Link>
-          ) : (
-            <Link className="logo" href="#">
-              <span className="inline-block">
-                <Image
-                  src="/images/Logo.png"
-                  className="l-dark"
-                  alt=""
-                  width={98}
-                  height={24}
-                />
-              </span>
-            </Link>
-          )}
-          {/* <!-- End Logo container--> */}
-
+        <div className="container mx-auto flex max-lg:px-4">
           {/* <!-- Start Mobile Toggle --> */}
-          <div className="menu-extras">
-            <div className="menu-item">
-              <Link
-                href="#"
-                className="navbar-toggle"
-                id="isToggle"
-                onClick={toggleMenu}
-              >
+          <div className="me-4 lg:hidden">
+            <div className="border-gray-200">
+              <Link href="#" className="navbar-toggle" onClick={toggleMenu}>
                 <div className="lines">
                   <span></span>
                   <span></span>
@@ -128,30 +91,24 @@ export default function Navbar({ navClass, topnavClass }: NavbarProps) {
             </div>
           </div>
           {/* <!-- End Mobile Toggle --> */}
+          <Link
+            className="inline-flex items-center justify-center py-0"
+            href="/"
+          >
+            <span className="sr-only">Rentak</span>
+            <Image
+              src="/images/Logo.png"
+              className="h-8 w-auto"
+              alt=""
+              width={134}
+              height={32}
+            />
+          </Link>
 
-          {/* <!-- Login button Start --> */}
-          <ul className="buy-button mb-0 list-none">
-            <li className="mb-0 inline">
-              <Link
-                locale={locale === "ar" ? "en" : "ar"}
-                href={pathname}
-                className="btn btn-icon rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
-              >
-                ع
-              </Link>
-            </li>
-            <li className="mb-0 hidden ps-1 sm:inline">
-              <Link
-                href="/auth-signup"
-                className="btn rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
-              >
-                Signup
-              </Link>
-            </li>
-          </ul>
-          {/* <!--Login button End--> */}
-
-          <div id="navigation" className={isOpen ? "hidden" : "open block"}>
+          <div
+            id="navigation"
+            className={`lg:ms-24 ${isOpen ? "hidden" : "open block"}`}
+          >
             {/* <!-- Navigation Menu--> */}
 
             <ul
@@ -210,6 +167,25 @@ export default function Navbar({ navClass, topnavClass }: NavbarProps) {
               })}
             </ul>
           </div>
+          <ul className="mb-0 ms-auto flex list-none items-center justify-center">
+            <li className="mb-0 inline">
+              <Link
+                locale={locale === "ar" ? "en" : "ar"}
+                href={pathname}
+                className="btn btn-icon rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
+              >
+                {locale === "ar" ? "EN" : "ع"}
+              </Link>
+            </li>
+            <li className="mb-0 hidden ps-1 sm:inline">
+              <Link
+                href="/auth-signup"
+                className="btn rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
+              >
+                Signup
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
       {/* End Navbar  */}
