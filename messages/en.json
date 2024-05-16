@@ -1,5 +1,8 @@
 {
   "hello": "Hello world",
+  "meta": {
+    "title": "Rentak"
+  },
   "header": {
     "title": "Find the perfect<wbr></wbr> unit for you",
     "subtitle": "At Rentak, we redefine the rental experience, making it hassle-free and secure for both homeowners and tenants.",
