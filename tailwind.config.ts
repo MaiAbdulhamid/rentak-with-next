@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
@@ -11,7 +10,6 @@ const config = {
   theme: {
     extend: {
       colors: {
-        ...colors,
         primary: "#0066CC",
         secondary: "#1DD2F3",
         "primary-shade-1": "#000D1A",

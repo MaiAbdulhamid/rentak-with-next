@@ -3,9 +3,9 @@ import { useTranslations } from "next-intl";
 
 import HeaderBackground from "@/app/[locale]/assets/images/header-background.png";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
-export function HomeHeader() {
+export function Header() {
   const t = useTranslations("header");
   return (
     <div className="relative isolate overflow-hidden pt-14">

@@ -1,14 +1,11 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { Header } from "@/components/home/header";
+import { Services } from "@/components/home/services";
 
-import { HomeHeader } from "@/components/home-header";
-import { Link } from "@/navigation";
-
-export default async function Home() {
-  const t = await getTranslations();
-
+export default function Home() {
   return (
     <main className="min-h-screen">
-      <HomeHeader />
+      <Header />
+      <Services />
     </main>
   );
 }
