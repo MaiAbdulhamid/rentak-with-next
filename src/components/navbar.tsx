@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import React, { useEffect, useState } from "react";
 
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Link, usePathname } from "@/navigation";
 
 const routes = [
@@ -169,21 +170,16 @@ export default function Navbar({ navClass, topnavClass }: NavbarProps) {
           </div>
           <ul className="mb-0 ms-auto flex list-none items-center justify-center">
             <li className="mb-0 inline">
-              <Link
-                locale={locale === "ar" ? "en" : "ar"}
-                href={pathname}
-                className="btn btn-icon rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
-              >
-                {locale === "ar" ? "EN" : "ع"}
-              </Link>
+              <Button asChild className="rounded-full" size="icon">
+                <Link locale={locale === "ar" ? "en" : "ar"} href={pathname}>
+                  {locale === "ar" ? "EN" : "ع"}
+                </Link>
+              </Button>
             </li>
             <li className="mb-0 hidden ps-1 sm:inline">
-              <Link
-                href="/auth-signup"
-                className="btn rounded-full border-blue-600 bg-blue-600 text-white hover:bg-blue-700 dark:border-blue-600"
-              >
-                Signup
-              </Link>
+              <Button asChild className="rounded-full">
+                <Link href="/auth-signup">Signup</Link>
+              </Button>
             </li>
           </ul>
         </div>

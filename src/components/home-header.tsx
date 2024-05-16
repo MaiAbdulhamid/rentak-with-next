@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 
 import HeaderBackground from "@/app/[locale]/assets/images/header-background.png";
 
+import { Button } from "./ui/button";
+
 export function HomeHeader() {
   const t = useTranslations("header");
   return (
@@ -26,12 +28,9 @@ export function HomeHeader() {
               {t("subtitle")}
             </p>
             <div className="mt-10 flex items-center justify-start gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-secondary-shade-4 px-7 py-2 text-sm font-semibold text-white shadow-sm hover:bg-secondary-shade-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-shade-3"
-              >
-                {t("cta")}
-              </a>
+              <Button asChild>
+                <a href="#">{t("cta")}</a>
+              </Button>
             </div>
           </div>
         </div>
