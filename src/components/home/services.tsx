@@ -30,7 +30,7 @@ const services: Array<Service> = [
 export function Services() {
   return (
     <div className="pt-24 sm:pt-32">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 lg:px-8">
+      <div className="conainer mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
         <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
           Our services
         </h2>
@@ -38,7 +38,7 @@ export function Services() {
           A great plateform to buy, sell and rent your properties without any
           agent or commisions.
         </p>
-        <div className="mt-12 flex w-full justify-between">
+        <div className="mt-12 flex w-full flex-col items-center justify-between gap-6 md:flex-row">
           {services.map((service) => (
             <Service key={service.title} {...service} />
           ))}

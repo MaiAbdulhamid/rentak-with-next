@@ -16,7 +16,7 @@ export function Header() {
         fill
       />
       <div className="absolute inset-0 -z-10 bg-[#161C2D]/50" />
-      <div className="container mx-auto lg:max-w-5xl 2xl:max-w-7xl">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-lg py-32 sm:py-48 lg:py-56">
           <div className="text-start">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl sm:leading-[90px]">

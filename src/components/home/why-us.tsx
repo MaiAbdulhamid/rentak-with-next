@@ -33,8 +33,8 @@ const features = [
 export function WhyUs() {
   return (
     <div className="pt-24 sm:pt-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto flex max-w-2xl gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto flex max-w-2xl flex-col gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="col-span-2">
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
               Why Choose Us
@@ -44,7 +44,7 @@ export function WhyUs() {
             </p>
             <dl className="mt-20 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
               {features.map((feature) => (
-                <div key={feature.name}>
+                <div key={feature.name} className="mx-auto flex flex-col">
                   <dt className="text-base/7 font-semibold text-primary-shade-3">
                     <div className="relative mb-6 flex size-8 items-center justify-center rounded-full bg-primary-shade-3/20">
                       <feature.icon
@@ -54,18 +54,18 @@ export function WhyUs() {
                     </div>
                     {feature.name}
                   </dt>
-                  <dd className="mt-1 max-w-64 text-sm/6 text-slate-600">
+                  <dd className="mt-1 text-sm/6 text-slate-600 md:max-w-64">
                     {feature.description}
                   </dd>
                 </div>
               ))}
             </dl>
           </div>
-          <div className="ms-auto flex max-w-lg">
+          <div className="mx-auto flex max-w-lg lg:ms-auto">
             <Image
               src={WhyUsBackground}
               alt=""
-              className="rounded-lg object-cover"
+              className="w-full rounded-lg object-cover"
             />
           </div>
         </div>
