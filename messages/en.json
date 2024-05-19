@@ -7,5 +7,32 @@
     "title": "Find the perfect<wbr></wbr> unit for you",
     "subtitle": "At Rentak, we redefine the rental experience, making it hassle-free and secure for both homeowners and tenants.",
     "cta": "Discover units"
+  },
+  "footer": {
+    "copyright": "All right reserved",
+    "description": "At Rentak, we redefine the rental experience, making it hassle-free and secure for both homeowners and tenants. Discover the ease of worry-free property management and transparent rental transactions.",
+    "pages": "Pages",
+    "contactUs": "Contact Us",
+    "faq": "FAQ",
+    "services": "Services",
+    "rentPayment": "Rent Payment",
+    "rentCollection": "Rent Collection",
+    "units": "Units",
+    "contact": "Contact"
+  },
+  "home": {
+    "contact": "Contact Us",
+    "getInTouch": "Get in touch !",
+    "sendMessage": "Send Message",
+    "yourName": "Your Name",
+    "name": "Name",
+    "yourEmail": "Your Email",
+    "email": "Email",
+    "yourPhone": "Your Phone",
+    "phone": "Phone",
+    "yourQuestion": "Your Question",
+    "subject": "Subject",
+    "yourMessage": "Your Message",
+    "message": "Message"
   }
 }
