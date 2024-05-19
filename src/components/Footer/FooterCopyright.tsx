@@ -32,7 +32,7 @@ const Copyright = () => {
 
   return (
     <div className="border-t border-[#BBBBBB] px-0 py-[30px]">
-      <div className="container text-center">
+      <div className="container mx-auto text-center">
         <div className="grid items-center gap-6 md:grid-cols-2">
           <div className="text-center md:text-start">
             <p className="mb-0 text-[#737373]">
