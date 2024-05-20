@@ -37,6 +37,35 @@
         "description": "For tenants, multiple payment and financing options to any rent all-over Egypt."
       }
     },
+    "why-us": {
+      "title": "Why Choose Us",
+      "subtitle": "We offer the following the owner and the tenant."
+    },
+    "plans": {
+      "title": "Plans",
+      "feature-comparison": "Feature comparison",
+      "traditional-rent": "Traditional rent",
+      "monthly-reminder": {
+        "title": "Monthly rent reminder",
+        "traditional": "Monthly rent reminders can be inconvenient.",
+        "rentak": "Hassle-free, automated rent collection without the need for reminders."
+      },
+      "unit-condition": {
+        "title": "Unit conditions",
+        "traditional": "Renters risk property damages, leading to potential disputes.",
+        "rentak": "We ensure the property's condition at the end of the lease, minimizing risks for landlords."
+      },
+      "unpaid-bills": {
+        "title": "Unpaid bills",
+        "traditional": "Unpaid utility bills can cause financial stress and disputes.",
+        "rentak": "We handle all bills promptly, eliminating the risk of unpaid utility bills."
+      },
+      "legal-support": {
+        "title": "Legal support",
+        "traditional": "Limited legal support and protection for landlords and tenants.",
+        "rentak": "Legal protection and expert support provided throughout the tenancy period."
+      }
+    },
     "discoverOurRentalUnits": "Discover our rental units",
     "recentUnits": "Recent Units",
     "viewAll": "View All Units",

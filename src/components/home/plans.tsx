@@ -1,68 +1,61 @@
-const pricing = {
-  tiers: [
-    {
-      name: "Traditional rent",
-      featured: false,
-      id: "tier-scale",
-      href: "#",
-    },
-    {
-      name: "Rentak",
-      featured: true,
-      id: "tier-starter",
-      href: "#",
-    },
-  ],
-  sections: {
-    features: [
-      {
-        name: "Monthly rent reminder",
-        tiers: {
-          "Traditional rent": "Monthly rent reminders can be inconvenient.",
-          Rentak:
-            "Hassle-free, automated rent collection without the need for reminders.",
-        },
-      },
-      {
-        name: "Unit condition",
-        tiers: {
-          "Traditional rent":
-            "Renters risk property damages, leading to potential disputes.",
-          Rentak:
-            "We ensure the property's condition at the end of the lease, minimizing risks for landlords.",
-        },
-      },
-      {
-        name: "Unpaid bills",
-        tiers: {
-          "Traditional rent":
-            "Unpaid utility bills can cause financial stress and disputes.",
-          Rentak:
-            "We handle all bills promptly, eliminating the risk of unpaid utility bills.",
-        },
-      },
-      {
-        name: "Legal Support",
-        tiers: {
-          "Traditional rent":
-            "Limited legal support and protection for landlords and tenants.",
-          Rentak:
-            "Legal protection and expert support provided throughout the tenancy period.",
-        },
-      },
-    ],
-  },
-} as const;
+import { useTranslations } from "next-intl";
 
 function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Plans() {
+  const t = useTranslations("home.plans");
+
+  const plans = {
+    plans: [
+      {
+        id: "traditional",
+        name: t("traditional-rent"),
+        featured: false,
+      },
+      {
+        id: "rentak",
+        name: "Rentak",
+        featured: true,
+      },
+    ],
+    features: [
+      {
+        name: t("monthly-reminder.title"),
+        tiers: {
+          traditional: t("monthly-reminder.traditional"),
+          rentak: t("monthly-reminder.rentak"),
+        },
+      },
+      {
+        name: t("unit-condition.title"),
+        tiers: {
+          traditional: t("unit-condition.traditional"),
+          rentak: t("unit-condition.rentak"),
+        },
+      },
+      {
+        name: t("unpaid-bills.title"),
+        tiers: {
+          traditional: t("unpaid-bills.traditional"),
+          rentak: t("unpaid-bills.rentak"),
+        },
+      },
+      {
+        name: t("legal-support.title"),
+        tiers: {
+          traditional: t("legal-support.traditional"),
+          rentak: t("legal-support.rentak"),
+        },
+      },
+    ],
+  } as const;
+
   return (
     <div className="relative pt-24 sm:pt-32">
       <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
-        Plans
+        {t("title")}
       </h2>
       <div className="mx-auto max-w-7xl px-6 lg:mt-12 lg:rounded-2xl lg:p-10 lg:pb-14 lg:shadow-lg">
         {/* Feature comparison (up to lg) */}
@@ -71,12 +64,12 @@ export default function Plans() {
           className="lg:hidden"
         >
           <h2 id="mobile-comparison-heading" className="sr-only">
-            Feature comparison
+            {t("feature-comparison")}
           </h2>
 
           <div className="mx-auto max-w-2xl space-y-16">
-            {pricing.tiers.map((tier) => (
-              <div key={tier.id}>
+            {plans.plans.map((tier) => (
+              <div key={tier.name}>
                 <div className="-mt-px w-72 pt-10 md:w-80">
                   <h3
                     className={classNames(
@@ -96,7 +89,7 @@ export default function Plans() {
                   />
 
                   <dl className="text-sm leading-6">
-                    {pricing.sections.features.map((feature) => (
+                    {plans.features.map((feature) => (
                       <div
                         key={feature.name}
                         className="grid grid-cols-3 items-center justify-between px-0 py-3"
@@ -106,7 +99,7 @@ export default function Plans() {
                         </dt>
                         <dd className="col-span-2 flex items-center justify-start px-4">
                           <span className="text-slate-500">
-                            {feature.tiers[tier.name]}
+                            {feature.tiers[tier.id]}
                           </span>
                         </dd>
                       </div>
@@ -130,8 +123,8 @@ export default function Plans() {
           <div className="grid grid-cols-5 gap-x-8">
             {/* Empty div to align headings with table */}
             <div />
-            {pricing.tiers.map((tier) => (
-              <div key={tier.id} aria-hidden="true" className="col-span-2">
+            {plans.plans.map((tier) => (
+              <div key={tier.name} aria-hidden="true" className="col-span-2">
                 <div className="px-6 pt-10">
                   <p
                     className={classNames(
@@ -165,15 +158,15 @@ export default function Plans() {
                   <th scope="col">
                     <span className="sr-only">Feature</span>
                   </th>
-                  {pricing.tiers.map((tier) => (
-                    <th key={tier.id} scope="col">
+                  {plans.plans.map((tier) => (
+                    <th key={tier.name} scope="col">
                       <span className="sr-only">{tier.name} tier</span>
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {pricing.sections.features.map((feature) => (
+                {plans.features.map((feature) => (
                   <tr key={feature.name} className="grid grid-cols-5 gap-x-8">
                     <th
                       scope="row"
@@ -181,14 +174,14 @@ export default function Plans() {
                     >
                       {feature.name}
                     </th>
-                    {pricing.tiers.map((tier) => (
+                    {plans.plans.map((tier) => (
                       <td
-                        key={tier.id}
+                        key={tier.name}
                         className="col-span-2 px-6 py-4 text-start"
                       >
                         <span className="size-full py-3">
                           <span className="text-lg text-slate-500">
-                            {feature.tiers[tier.name]}
+                            {feature.tiers[tier.id]}
                           </span>
                         </span>
                       </td>

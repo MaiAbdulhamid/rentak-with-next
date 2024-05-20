@@ -1,5 +1,6 @@
 import { BriefcaseIcon, HomeIcon, KeyIcon, TruckIcon } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import WhyUsBackground from "@/app/[locale]/assets/images/why-choose-us.png";
 
@@ -31,17 +32,17 @@ const features = [
 ];
 
 export function WhyUs() {
+  const t = useTranslations("home.why-us");
+
   return (
     <div className="pt-24 sm:pt-32">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:flex-row">
           <div className="col-span-2">
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              Why Choose Us
+              {t("title")}
             </h2>
-            <p className="mt-7 text-xl/7 text-slate-600">
-              We offer the following the owner and the tenant.
-            </p>
+            <p className="mt-7 text-xl/7 text-slate-600">{t("subtitle")}</p>
             <dl className="mt-20 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
               {features.map((feature) => (
                 <div key={feature.name} className="mx-auto flex flex-col">
