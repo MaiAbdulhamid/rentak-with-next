@@ -1,38 +1,45 @@
-import { LucideBath, LucideBedDouble } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useTranslations } from "next-intl";
 
-type UnitProps = {
-  item: {
-    id: string | number;
-  };
-};
+import {
+  AreaIcon,
+  BathIcon,
+  BedIcon,
+  LinkIcon,
+} from "@/app/[locale]/assets/svgs";
 
-const Unit = ({ item }: UnitProps) => {
+const Unit = ({ item }: any) => {
+  const trans = useTranslations("unit");
+
+  const bedroom = item.rooms.find(
+    (room: { room_name: string }) => room.room_name === "Bedroom",
+  );
+  const bathroom = item.rooms.find(
+    (room: { room_name: string }) => room.room_name === "Bathroom",
+  );
+
   return (
     <>
-      {/* <div
-        className="group overflow-hidden rounded-xl bg-white shadow duration-500 ease-in-out hover:shadow-xl dark:bg-slate-900 dark:shadow-gray-700 dark:hover:shadow-xl dark:hover:shadow-gray-700"
-      >
+      <div className="group overflow-hidden rounded-xl bg-white shadow duration-500 ease-in-out hover:shadow-xl">
         <div className="relative">
           <Image
-            src={item.image}
+            src={item.picture}
             alt=""
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: "100%", height: "250px" }}
             priority
           />
 
-          <div className="absolute top-4 end-4">
-            <Link
-              href="#"
-              className="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"
-            >
-              <i className="mdi mdi-heart mdi-18px"></i>
-            </Link>
+          <div className="absolute bottom-4 end-4">
+            <div className="btn rounded-full bg-white shadow hover:text-primary focus:text-primary">
+              <p className="text=[#181A20] font-semibold">
+                {item.price} {trans("egp")} /{" "}
+                <span className="font-normal">{trans("month")}</span>
+              </p>
+            </div>
           </div>
         </div>
 
@@ -40,61 +47,57 @@ const Unit = ({ item }: UnitProps) => {
           <div className="pb-6">
             <Link
               href={`/property-detail/${item.id}`}
-              className="text-lg hover:text-green-600 font-medium ease-in-out duration-500"
+              className="text-base font-semibold duration-500 ease-in-out hover:text-primary-shade-3"
             >
-              {item.name}
+              {item.property_name}
             </Link>
+            {item.property_type.type_name ? (
+              <p className="text=[#717171] inline-block max-w-64 truncate text-sm">
+                {item.property_type.type_name}
+              </p>
+            ) : (
+              <p className="h-[20px]"></p>
+            )}
           </div>
 
-          <ul className="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-            <li className="flex items-center me-4">
-              <LiaCompressArrowsAltSolid className="me-2 text-green-600" />
-              <span>{item.square}sqf</span>
+          <ul className="flex list-none items-center border-b border-[#DDDDDD] py-6">
+            <li className="me-4 flex items-center gap-1">
+              <BedIcon />
+              <span>
+                {bedroom !== undefined ? bedroom.num_of_rooms : 0}{" "}
+                {trans("beds")}
+              </span>
             </li>
 
-            <li className="flex items-center me-4">
-              <LucideBedDouble className="me-2 text-green-600" />
-              <span>{item.beds} Beds</span>
+            <li className="me-4 flex items-center gap-1">
+              <BathIcon />
+              <span>
+                {bathroom !== undefined ? bathroom.num_of_rooms : 0}{" "}
+                {trans("baths")}
+              </span>
             </li>
-
-            <li className="flex items-center">
-              <LucideBath className="me-2 text-green-600" />
-              <span>{item.baths} Baths</span>
+            <li className="flex items-center gap-1">
+              <AreaIcon />
+              <span>{item.area}</span>
             </li>
           </ul>
 
-          <ul className="pt-6 flex justify-between items-center list-none">
-            <li>
-              <span className="text-slate-400">Price</span>
-              <p className="text-lg font-medium">${item.price}</p>
-            </li>
+          <Link
+            href={`/property-detail/${item.id}`}
+            className="duration-500 ease-in-out hover:text-primary-shade-3"
+          >
+            <ul className="flex list-none items-center justify-between pt-6">
+              <li>
+                <p className="text-sm font-normal">{trans("availableNow")}</p>
+              </li>
 
-            <li>
-              <span className="text-slate-400">Rating</span>
-              <ul className="text-lg font-medium text-amber-400 list-none">
-                <li className="inline ms-1">
-                  <i className="mdi mdi-star"></i>
-                </li>
-                <li className="inline ms-1">
-                  <i className="mdi mdi-star"></i>
-                </li>
-                <li className="inline ms-1">
-                  <i className="mdi mdi-star"></i>
-                </li>
-                <li className="inline ms-1">
-                  <i className="mdi mdi-star"></i>
-                </li>
-                <li className="inline ms-1">
-                  <i className="mdi mdi-star"></i>
-                </li>
-                <li className="inline ms-1 text-black dark:text-white">
-                  {item.rating}(30)
-                </li>
-              </ul>
-            </li>
-          </ul>
+              <li>
+                <LinkIcon />
+              </li>
+            </ul>
+          </Link>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

@@ -41,6 +41,26 @@
 @layer components {
   /*******************   */
 
+  /*     Units Swiper Slider      */
+
+  /* ================== */
+  .units-swiper-slider .swiper{
+    padding-bottom: 3rem;
+  }
+  .swiper-custom-pagination{
+    width: fit-content !important;
+  }
+  .swiper-custom-pagination .swiper-pagination-bullet {
+    background: #D7D7D7;
+    height: 8px;
+    width: 8px;
+  }
+  .swiper-custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #80b3e6;
+  }
+
+  /*******************   */
+
   /*     Buttons      */
 
   /* ================== */

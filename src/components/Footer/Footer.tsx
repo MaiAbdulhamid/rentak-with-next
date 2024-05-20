@@ -5,7 +5,7 @@ import Logo from "./Logo";
 export default function Footer() {
   return (
     <footer className="relative mt-24">
-      <div className="container">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1">
           <div className="relative py-16">
             <div className="relative w-full">

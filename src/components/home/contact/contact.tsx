@@ -1,35 +1,27 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import ContactImage from "@/app/[locale]/assets/images/contact-image.png";
+import { ContactImage } from "@/app/[locale]/assets/svgs/contact-image";
 
 import SectionTitle from "../components/sectionTitle";
 import ContactForm from "./contactForm";
 
 const Contact = () => {
-  const trans = useTranslations("home");
+  const t = useTranslations("home");
 
   return (
     <section className="relative py-16 lg:py-24">
-      <div className="container">
-        <SectionTitle text={trans("contact")} />
-        <div className="grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">
-          <div className="md:col-span-6 lg:col-span-7">
-            <Image
-              src={ContactImage}
-              alt="Contact Image"
-              width={0}
-              height={0}
-              sizes="100vw"
-              style={{ width: "100%", height: "auto" }}
-            />
+      <div className="container mx-auto">
+        <SectionTitle text={t("contact")} />
+        <div className="mt-8 flex flex-col items-stretch lg:flex-row lg:items-center lg:justify-around">
+          <div className="flex items-center justify-center">
+            <ContactImage />
           </div>
 
-          <div className="md:col-span-6 lg:col-span-5">
+          <div className="lg:max-w-lg">
             <div className="lg:me-5">
               <div className="rounded-md bg-white p-6 shadow">
                 <h3 className="mb-6 text-2xl font-medium leading-normal text-[#161C2D]">
-                  {trans("getInTouch")}
+                  {t("getInTouch")}
                 </h3>
                 <ContactForm />
               </div>

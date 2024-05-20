@@ -1,94 +1,127 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import type z from "zod";
 
-import EmailInput from "@/components/form/EmailInput";
-import PhoneNumberInput from "@/components/form/PhoneNumberInput";
-import TextareaInput from "@/components/form/TextareaInput";
-import TextInput from "@/components/form/TextInput";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { contactSchema } from "@/zodSchema/contact";
 
 type FormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
-  const trans = useTranslations("home");
-  const formMethods = useForm<FormData>({
+  const t = useTranslations("home");
+
+  const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      full_name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    },
   });
-  const { isSubmitting, isValid, errors } = formMethods.formState;
 
   const onSubmit = (data: FormData) => {
-    console.log(isSubmitting);
     console.log(data);
-    console.log(isValid);
   };
   return (
-    <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-      <div className="grid lg:grid-cols-12 lg:gap-6">
-        <div className="mb-5 lg:col-span-6">
-          <TextInput
-            label={trans("yourName")}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
+          <FormField
+            control={form.control}
             name="full_name"
-            placeholder={`${trans("name")} :`}
-            control={formMethods.control}
-            rules={{
-              required: {
-                value: require,
-                message: "This field is required",
-              },
-            }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("yourName")}</FormLabel>
+                <FormControl>
+                  <Input placeholder={`${t("name")}:`} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div className="mb-5 lg:col-span-6">
-          <EmailInput
-            label={trans("yourEmail")}
+          <FormField
+            control={form.control}
             name="email"
-            placeholder={`${trans("email")} :`}
-            control={formMethods.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("yourEmail")}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder={`${t("email")}:`}
+                    type="email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
         </div>
-      </div>
-      <div className="grid grid-cols-1">
-        <div className="mb-5">
-          <PhoneNumberInput
-            label={trans("yourPhone")}
-            name="phone"
-            placeholder={`${trans("phone")} :`}
-            control={formMethods.control}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1">
-        <div className="mb-5">
-          <TextInput
-            label={trans("yourQuestion")}
-            name="subject"
-            placeholder={`${trans("subject")} :`}
-            control={formMethods.control}
-            rules={{ required: true }}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("yourPhone")}</FormLabel>
+              <FormControl>
+                <Input placeholder={`${t("phone")}:`} type="tel" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="mb-5">
-          <TextareaInput
-            label={trans("yourMessage")}
-            name="message"
-            placeholder={`${trans("message")} :`}
-            control={formMethods.control}
-          />
-        </div>
-      </div>
-      <button
-        type="submit"
-        id="submit"
-        name="send"
-        className="btn rounded-md bg-primary-shade-3 text-white hover:bg-primary-shade-2"
-      >
-        {trans("sendMessage")}
-      </button>
-    </form>
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("yourQuestion")}</FormLabel>
+              <FormControl>
+                <Input placeholder={`${t("subject")}:`} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("yourMessage")}</FormLabel>
+              <FormControl>
+                <Textarea placeholder={`${t("message")}:`} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button size="lg" type="submit" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting && (
+            <Loader2 className="mr-2 size-4 animate-spin" />
+          )}
+          {t("sendMessage")}
+        </Button>
+      </form>
+    </Form>
   );
 };
 
