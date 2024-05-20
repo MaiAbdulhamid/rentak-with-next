@@ -15,7 +15,7 @@ function Units({ units }: UnitsProps) {
 
   return (
     <div className="pt-24 sm:pt-32">
-      <div className="conainer mx-auto px-6 md:px-8 lg:max-w-7xl">
+      <div className="container mx-auto px-6 md:px-8 lg:max-w-7xl">
         <SectionTitle text={trans("discoverOurRentalUnits")} />
         <div className="mt-8">
           <ViewAllUnits />
