@@ -9,25 +9,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { ArrowIcon } from "@/app/[locale]/assets/svgs";
 import Unit from "@/components/unit";
+import { type Unit as TUnit } from "@/services/units";
 
-import { getUnits } from "../services/unit-service";
+type UnitsSliderProps = {
+  units: Array<TUnit>;
+};
 
-const UnitsSlider = () => {
-  const [properties, setProperties] = useState([]);
-
-  const getUnitsHandler = async () => {
-    try {
-      const response = await getUnits();
-
-      setProperties(response.data.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getUnitsHandler();
-  }, []);
-
+const UnitsSlider = ({ units }: UnitsSliderProps) => {
   return (
     <>
       <Swiper
@@ -61,7 +49,7 @@ const UnitsSlider = () => {
           },
         }}
       >
-        {properties.map((property: any) => (
+        {units.map((property: any) => (
           <SwiperSlide key={property.id}>
             <Unit item={property} />
           </SwiperSlide>

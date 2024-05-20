@@ -1,10 +1,16 @@
 import { useTranslations } from "next-intl";
 
+import { type Unit } from "@/services/units";
+
 import SectionTitle from "../components/sectionTitle";
 import UnitsSlider from "./unitsSlider";
 import ViewAllUnits from "./viewAllUnits";
 
-const Units = () => {
+type UnitsProps = {
+  units: Array<Unit>;
+};
+
+function Units({ units }: UnitsProps) {
   const trans = useTranslations("home");
 
   return (
@@ -16,10 +22,10 @@ const Units = () => {
         <ViewAllUnits />
       </div>
       <div className="units-swiper-slider">
-        <UnitsSlider />
+        <UnitsSlider units={units} />{" "}
       </div>
     </div>
   );
-};
+}
 
 export default Units;
