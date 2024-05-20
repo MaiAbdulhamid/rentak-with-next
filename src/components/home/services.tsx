@@ -1,4 +1,5 @@
 import { BriefcaseIcon, HomeIcon, KeyIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Service = {
   title: string;
@@ -6,37 +7,35 @@ type Service = {
   icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 };
 
-const services: Array<Service> = [
-  {
-    title: "Rent management",
-    description:
-      "Guaranteed rent collection, Bill payment, Unit conditions and more.",
-    icon: HomeIcon,
-  },
-  {
-    title: "Rent collection",
-    description:
-      "For home owners, remind your tenants paying rent on time, with multiple payment options.",
-    icon: BriefcaseIcon,
-  },
-  {
-    title: "Rent payment",
-    description:
-      "for tenants, multiple payment and financing options to any rent all-over Egypt.",
-    icon: KeyIcon,
-  },
-];
-
 export function Services() {
+  const t = useTranslations("home.our-services");
+
+  const services: Array<Service> = [
+    {
+      title: t("rent-management.title"),
+      description: t("rent-management.description"),
+      icon: HomeIcon,
+    },
+    {
+      title: t("rent-collection.title"),
+      description: t("rent-collection.description"),
+      icon: BriefcaseIcon,
+    },
+    {
+      title: t("rent-payment.title"),
+      description: t("rent-payment.description"),
+      icon: KeyIcon,
+    },
+  ];
+
   return (
     <div className="pt-24 sm:pt-32">
       <div className="conainer mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
         <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
-          Our services
+          {t("title")}
         </h2>
         <p className="mt-5 max-w-2xl text-center text-lg text-slate-600">
-          A great plateform to buy, sell and rent your properties without any
-          agent or commisions.
+          {t("subtitle")}
         </p>
         <div className="mt-12 flex w-full flex-col items-center justify-between gap-6 md:flex-row">
           {services.map((service) => (

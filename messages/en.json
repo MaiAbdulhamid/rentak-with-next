@@ -21,6 +21,22 @@
     "contact": "Contact"
   },
   "home": {
+    "our-services": {
+      "title": "Our services",
+      "subtitle": "A great platform to buy, sell and rent your properties without any agent or commissions.",
+      "rent-management": {
+        "title": "Rent management",
+        "description": "Guaranteed rent collection, Bill payment, Unit conditions and more."
+      },
+      "rent-collection": {
+        "title": "Rent collection",
+        "description": "For homeowners, remind your tenants paying rent on time, with multiple payment options."
+      },
+      "rent-payment": {
+        "title": "Rent payment",
+        "description": "For tenants, multiple payment and financing options to any rent all-over Egypt."
+      }
+    },
     "discoverOurRentalUnits": "Discover our rental units",
     "recentUnits": "Recent Units",
     "viewAll": "View All Units",
