@@ -42,7 +42,7 @@ const ContactForm = () => {
     try {
       const response = await contactUs(data);
 
-      notify(response.data.message, "Success");
+      notify(response.message, "Success");
     } catch (error: any) {
       Object.entries(error.response.data.errors).map(([key, value]: any) => {
         return notify(value[0], "Error");

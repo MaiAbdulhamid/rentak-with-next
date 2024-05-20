@@ -15,14 +15,14 @@ function Units({ units }: UnitsProps) {
 
   return (
     <div className="pt-24 sm:pt-32">
-      <div className="grid grid-cols-1 pb-8 text-center">
+      <div className="conainer mx-auto px-6 md:px-8 lg:max-w-7xl">
         <SectionTitle text={trans("discoverOurRentalUnits")} />
-      </div>
-      <div className="grid grid-cols-1 pb-8">
-        <ViewAllUnits />
-      </div>
-      <div className="units-swiper-slider">
-        <UnitsSlider units={units} />{" "}
+        <div className="mt-8">
+          <ViewAllUnits />
+        </div>
+        <div className="mt-8">
+          <UnitsSlider units={units} />
+        </div>
       </div>
     </div>
   );

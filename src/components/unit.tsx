@@ -8,8 +8,13 @@ import {
   BedIcon,
   LinkIcon,
 } from "@/app/[locale]/assets/svgs";
+import { type Unit as TUnit } from "@/services/units";
 
-const Unit = ({ item }: any) => {
+type UnitProps = {
+  item: TUnit;
+};
+
+const Unit = ({ item }: UnitProps) => {
   const trans = useTranslations("unit");
 
   const bedroom = item.rooms.find(
@@ -22,16 +27,8 @@ const Unit = ({ item }: any) => {
   return (
     <>
       <div className="group overflow-hidden rounded-xl bg-white shadow duration-500 ease-in-out hover:shadow-xl">
-        <div className="relative">
-          <Image
-            src={item.picture}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "250px" }}
-            priority
-          />
+        <div className="relative h-80">
+          <Image className="object-cover" src={item.picture} alt="" fill />
 
           <div className="absolute bottom-4 end-4">
             <div className="btn rounded-full bg-white shadow hover:text-primary focus:text-primary">
@@ -72,8 +69,7 @@ const Unit = ({ item }: any) => {
             <li className="me-4 flex items-center gap-1">
               <BathIcon />
               <span>
-                {bathroom !== undefined ? bathroom.num_of_rooms : 0}{" "}
-                {trans("baths")}
+                {bathroom ? bathroom.num_of_rooms : 0} {trans("baths")}
               </span>
             </li>
             <li className="flex items-center gap-1">
