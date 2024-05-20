@@ -1,32 +1,32 @@
-const steps = [
-  {
-    title: "Submit your property",
-    description:
-      "Homeowners submit their property details to Rentak for comprehensive management.",
-  },
-  {
-    title: "Effortless management",
-    description:
-      "Rentak handles legalities, rent collection, property maintenance, and ensures a smooth tenant experience.",
-  },
-  {
-    title: "Secure transactions",
-    description:
-      "Homeowners receive on-time payments, and tenants enjoy transparent transactions and hassle-free living.",
-  },
-  {
-    title: "End of rent",
-    description:
-      "Rentak guarantees the unit's condition, settles bills, and manages the transition for both parties.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function HowItWorks() {
+  const t = useTranslations("home.how-it-works");
+
+  const steps = [
+    {
+      title: t("submit.title"),
+      description: t("submit.description"),
+    },
+    {
+      title: t("manage.title"),
+      description: t("manage.description"),
+    },
+    {
+      title: t("secure.title"),
+      description: t("secure.description"),
+    },
+    {
+      title: t("end.title"),
+      description: t("end.description"),
+    },
+  ];
+
   return (
     <div className="pt-24 sm:pt-32">
       <div className="conainer mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
         <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
-          How it work
+          {t("title")}
         </h2>
         <div className="relative mt-12">
           {steps.map((step) => (

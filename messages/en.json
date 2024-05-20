@@ -66,6 +66,25 @@
         "rentak": "Legal protection and expert support provided throughout the tenancy period."
       }
     },
+    "how-it-works": {
+      "title": "How it work",
+      "submit": {
+        "title": "Submit your property",
+        "description": "Homeowners submit their property details to Rentak for comprehensive management."
+      },
+      "manage": {
+        "title": "Effortless management",
+        "description": "Rentak handles legalities, rent collection, property maintenance, and ensures a smooth tenant experience."
+      },
+      "secure": {
+        "title": "Secure transactions",
+        "description": "Homeowners receive on-time payments, and tenants enjoy transparent transactions and hassle-free living."
+      },
+      "end": {
+        "title": "End of rent",
+        "description": "Rentak guarantees the unit's condition, settles bills, and manages the transition for both parties."
+      }
+    },
     "discoverOurRentalUnits": "Discover our rental units",
     "recentUnits": "Recent Units",
     "viewAll": "View All Units",
