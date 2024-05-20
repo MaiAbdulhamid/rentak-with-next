@@ -44,7 +44,7 @@ const Unit = ({ item }: any) => {
         </div>
 
         <div className="p-6">
-          <div className="pb-6">
+          <div className="flex flex-col pb-6">
             <Link
               href={`/property-detail/${item.id}`}
               className="text-base font-semibold duration-500 ease-in-out hover:text-primary-shade-3"
