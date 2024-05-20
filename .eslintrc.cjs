@@ -26,6 +26,8 @@ const config = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "tailwindcss/no-custom-classname": "off",
+    // Gives false positive for overflow-clip
+    "tailwindcss/migration-from-tailwind-2": "off",
     "react/prop-types": "off",
   },
   overrides: [

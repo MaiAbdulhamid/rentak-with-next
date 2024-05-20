@@ -34,7 +34,7 @@ const UnitsSlider = ({ units }: UnitsSliderProps) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex items-center justify-center gap-4">
+      <div className="mt-6 flex items-center justify-center gap-4">
         <CarouselPrevious className="static translate-y-0" variant="ghost" />
         <CarouselDots />
         <CarouselNext className="static translate-y-0" variant="ghost" />
