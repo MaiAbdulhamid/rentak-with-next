@@ -1,8 +1,12 @@
+import { cookies } from "next/headers";
+
 import axios from "@/lib/axios";
 
 export async function GET(request: Request) {
   try {
-    const response = await axios.get(`/home/get-home-units?lang=en`);
+    const response = await axios.get(
+      `/home/get-home-units?lang=${cookies().get("NEXT_LOCALE")}`,
+    );
     const data = response.data;
 
     // Send the data back to the client

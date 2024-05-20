@@ -3,8 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
+import { Toaster } from "react-hot-toast";
 import type z from "zod";
 
+import { notify } from "@/components/toaster/toaster";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,12 +20,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema } from "@/zodSchema/contact";
 
+import { contactUs } from "../services/contact-service";
+
 type FormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const t = useTranslations("home");
 
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       full_name: "",
@@ -34,8 +38,16 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await contactUs(data);
+
+      notify(response.data.message, "Success");
+    } catch (error: any) {
+      Object.entries(error.response.data.errors).map(([key, value]: any) => {
+        return notify(value[0], "Error");
+      });
+    }
   };
   return (
     <Form {...form}>
@@ -121,6 +133,7 @@ const ContactForm = () => {
           {t("sendMessage")}
         </Button>
       </form>
+      <Toaster />
     </Form>
   );
 };

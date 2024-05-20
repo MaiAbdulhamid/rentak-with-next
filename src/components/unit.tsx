@@ -47,12 +47,12 @@ const Unit = ({ item }: any) => {
           <div className="flex flex-col pb-6">
             <Link
               href={`/property-detail/${item.id}`}
-              className="text-base font-semibold duration-500 ease-in-out hover:text-primary-shade-3"
+              className="truncate text-base font-semibold duration-500 ease-in-out hover:text-primary-shade-3"
             >
               {item.property_name}
             </Link>
             {item.property_type.type_name ? (
-              <p className="text=[#717171] inline-block max-w-64 truncate text-sm">
+              <p className="text=[#717171] inline-block text-sm">
                 {item.property_type.type_name}
               </p>
             ) : (

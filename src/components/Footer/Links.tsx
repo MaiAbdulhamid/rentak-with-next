@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-import { MailOutlineIcon, PhoneIcon } from "@/app/[locale]/assets/svgs";
+import {
+  LocationIcon,
+  MailOutlineIcon,
+  PhoneIcon,
+} from "@/app/[locale]/assets/svgs";
 import URLS from "@/shared/urls";
 
 const Links = () => {
@@ -52,6 +56,7 @@ const Links = () => {
           id: "address",
           url: URLS.address,
           text: "Smart Village, Linx Business Park, B115, Giza, Egypt.",
+          icon: <LocationIcon color="#737373" />,
         },
         {
           id: "mail-to",
@@ -68,8 +73,11 @@ const Links = () => {
       ],
     },
   ];
-  return lists.map((list) => (
-    <div key={list.id} className="md:col-span-4 lg:col-span-2">
+  return lists.map((list, index) => (
+    <div
+      key={list.id}
+      className={`md:col-span-4 ${index === lists.length - 1 ? "lg:col-span-3" : "lg:col-span-2"}`}
+    >
       <h5 className="font-semibold tracking-[1px] text-primary-shade-3">
         {list.title}
       </h5>

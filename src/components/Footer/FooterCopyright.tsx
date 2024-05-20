@@ -5,6 +5,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
+  WhatsappIcon,
 } from "@/app/[locale]/assets/svgs";
 import URLS from "@/shared/urls";
 
@@ -18,7 +19,7 @@ const Copyright = () => {
     },
     {
       url: URLS.whatsapp,
-      // icon: <WhatsappIcon />,
+      icon: <WhatsappIcon />,
     },
     {
       url: URLS.linkedin,
