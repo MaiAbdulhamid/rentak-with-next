@@ -1,12 +1,11 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { HTTPError } from "ky";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
 import type z from "zod";
 
-import { notify } from "@/components/toaster/toaster";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 import { contactSchema } from "@/zodSchema/contact";
 
 import { contactUs } from "../services/contact-service";
@@ -26,6 +26,7 @@ type FormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const t = useTranslations("home");
+  const { toast } = useToast();
 
   const form = useForm<FormData>({
     resolver: zodResolver(contactSchema),
@@ -42,11 +43,28 @@ const ContactForm = () => {
     try {
       const response = await contactUs(data);
 
-      notify(response.message, "Success");
-    } catch (error: any) {
-      Object.entries(error.response.data.errors).map(([key, value]: any) => {
-        return notify(value[0], "Error");
+      toast({
+        title: "Success",
+        description: response.message,
       });
+    } catch (error) {
+      if (error instanceof HTTPError && error.response.status === 400) {
+        const errors = await error.response.json();
+
+        Object.entries(errors.errors).map(([key, value]: any) => {
+          return toast({
+            title: "Error",
+            description: value[0],
+            variant: "destructive",
+          });
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong",
+          variant: "destructive",
+        });
+      }
     }
   };
   return (
@@ -133,7 +151,6 @@ const ContactForm = () => {
           {t("sendMessage")}
         </Button>
       </form>
-      <Toaster />
     </Form>
   );
 };
