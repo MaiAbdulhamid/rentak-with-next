@@ -1,4 +1,6 @@
 "use client";
+import { useLocale } from "next-intl";
+
 import {
   Carousel,
   CarouselContent,
@@ -8,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Unit from "@/components/unit";
+import useTextDirection from "@/hooks/useTextDirection";
 import { type Unit as TUnit } from "@/services/units";
 
 type UnitsSliderProps = {
@@ -15,8 +18,15 @@ type UnitsSliderProps = {
 };
 
 const UnitsSlider = ({ units }: UnitsSliderProps) => {
+  const locale = useLocale();
+  const direction = useTextDirection(locale);
+
   return (
-    <Carousel>
+    <Carousel
+      opts={{
+        direction,
+      }}
+    >
       <CarouselContent>
         {units.map((unit) => (
           <CarouselItem key={unit.id} className="md:basis-1/2 lg:basis-1/3">
