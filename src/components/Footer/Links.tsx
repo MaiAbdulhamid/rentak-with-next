@@ -89,7 +89,7 @@ const Links = () => {
               className="flex items-center gap-2 text-[#737373] duration-500 ease-in-out hover:text-slate-400"
             >
               {link.icon}
-              <span>{link.text}</span>
+              <span style={{ direction: link.icon && "ltr" }}>{link.text}</span>
             </Link>
           </li>
         ))}
