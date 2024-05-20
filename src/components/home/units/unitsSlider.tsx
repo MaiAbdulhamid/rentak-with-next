@@ -1,83 +1,35 @@
 "use client";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import { useEffect, useState } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import { ArrowIcon } from "@/app/[locale]/assets/svgs";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Unit from "@/components/unit";
+import { type Unit as TUnit } from "@/services/units";
 
-import { getUnits } from "../services/unit-service";
+type UnitsSliderProps = {
+  units: Array<TUnit>;
+};
 
-const UnitsSlider = () => {
-  const [properties, setProperties] = useState([]);
-
-  const getUnitsHandler = async () => {
-    try {
-      const response = await getUnits();
-
-      setProperties(response.data.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getUnitsHandler();
-  }, []);
-
+const UnitsSlider = ({ units }: UnitsSliderProps) => {
   return (
-    <>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation={{
-          nextEl: ".custom--next",
-          prevEl: ".custom--prev",
-        }}
-        pagination={{ clickable: true, el: ".swiper-custom-pagination" }}
-        breakpoints={{
-          280: {
-            slidesPerView: 1,
-          },
-          360: {
-            slidesPerView: 1,
-          },
-          576: {
-            slidesPerView: 1,
-          },
-          // when window width is >= 768px
-          768: {
-            slidesPerView: 2,
-          },
-          992: {
-            slidesPerView: 2,
-          },
-          1200: {
-            slidesPerView: 3,
-          },
-        }}
-      >
-        {properties.map((property: any) => (
-          <SwiperSlide key={property.id}>
-            <Unit item={property} />
-          </SwiperSlide>
+    <Carousel>
+      <CarouselContent>
+        {units.map((unit) => (
+          <CarouselItem key={unit.id} className="md:basis-1/2 lg:basis-1/3">
+            <Unit item={unit} />
+          </CarouselItem>
         ))}
-      </Swiper>
-
-      <div className="flex w-full items-center justify-center gap-6">
-        <div className="custom--prev">
-          <ArrowIcon type="left" />
-        </div>
-        <div className="swiper-custom-pagination" />
-        <div className="custom--next">
-          <ArrowIcon type="right" />
-        </div>
+      </CarouselContent>
+      <div className="mt-6 flex items-center justify-center gap-4">
+        <CarouselPrevious className="static translate-y-0" variant="ghost" />
+        <CarouselDots />
+        <CarouselNext className="static translate-y-0" variant="ghost" />
       </div>
-    </>
+    </Carousel>
   );
 };
 export default UnitsSlider;

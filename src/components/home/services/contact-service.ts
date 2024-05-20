@@ -1,5 +1,13 @@
-import axios from "@/lib/axios";
+import ky from "@/lib/ky";
 
-export function contactUs(formData: any) {
-  return axios.post("/contact-us/create", formData);
+type ContactResponse = {
+  message: string;
+};
+
+export function contactUs(data: Record<string, any>) {
+  return ky
+    .post("contact-us/create", {
+      json: data,
+    })
+    .json<ContactResponse>();
 }

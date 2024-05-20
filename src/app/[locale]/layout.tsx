@@ -8,6 +8,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/toaster";
 import useTextDirection from "@/hooks/useTextDirection";
 
 const notoSans = Noto_Sans_Arabic({
@@ -55,6 +56,7 @@ export default async function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>
