@@ -3,7 +3,8 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import React, { useEffect, useState } from "react";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import logo from "@/app/[locale]/assets/images/Logo.png";
+import { Button } from "@/components/ui/button";
 import { Link, usePathname } from "@/navigation";
 
 const routes = [
@@ -98,11 +99,11 @@ export default function Navbar({ navClass, topnavClass }: NavbarProps) {
           >
             <span className="sr-only">Rentak</span>
             <Image
-              src="/images/Logo.png"
+              src={logo}
               className="h-8 w-auto"
               alt=""
-              width={134}
               height={32}
+              priority
             />
           </Link>
 

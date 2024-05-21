@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import HeaderBackground from "@/app/[locale]/assets/images/header-background.png";
+import headerBackground from "@/app/[locale]/assets/images/header-background.png";
 
 import { Button } from "../ui/button";
 
@@ -10,10 +10,13 @@ export function Header() {
   return (
     <div className="relative isolate overflow-hidden pt-14">
       <Image
-        src={HeaderBackground}
+        src={headerBackground}
         className="absolute inset-0 -z-20 size-full object-cover"
+        placeholder="blur"
         alt=""
         fill
+        priority
+        sizes="100vw"
       />
       <div className="absolute inset-0 -z-10 bg-[#161C2D]/50" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

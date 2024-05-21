@@ -2,7 +2,7 @@ import { BriefcaseIcon, HomeIcon, KeyIcon, TruckIcon } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import WhyUsBackground from "@/app/[locale]/assets/images/why-choose-us.png";
+import whyUsBackground from "@/app/[locale]/assets/images/why-choose-us.png";
 
 const features = [
   {
@@ -64,9 +64,10 @@ export function WhyUs() {
           </div>
           <div className="mx-auto flex max-w-lg lg:ms-auto">
             <Image
-              src={WhyUsBackground}
+              src={whyUsBackground}
               alt=""
               className="w-full rounded-lg object-cover"
+              placeholder="blur"
             />
           </div>
         </div>

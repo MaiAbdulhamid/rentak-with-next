@@ -5,7 +5,15 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["csb10032002912fe08a.blob.core.windows.net"],
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "csb10032002912fe08a.blob.core.windows.net",
+        port: "",
+        pathname: "/transferimages/**",
+      },
+    ],
   },
 };
 
