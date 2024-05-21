@@ -19,11 +19,13 @@ const Links = () => {
           id: "contact-us",
           url: URLS.contactUs,
           text: trans("contactUs"),
+          icon: null,
         },
         {
           id: "faq",
           url: URLS.faq,
           text: trans("faq"),
+          icon: null,
         },
       ],
     },
@@ -35,16 +37,19 @@ const Links = () => {
           id: "rent-payment",
           url: URLS.rentPayment,
           text: trans("rentPayment"),
+          icon: null,
         },
         {
           id: "rent-collection",
           url: URLS.rentCollection,
           text: trans("rentCollection"),
+          icon: null,
         },
         {
           id: "units",
           url: URLS.units,
           text: trans("units"),
+          icon: null,
         },
       ],
     },
@@ -88,8 +93,10 @@ const Links = () => {
               href={link.url}
               className="flex items-center gap-2 text-[#737373] duration-500 ease-in-out hover:text-slate-400"
             >
-              {link.icon}
-              <span style={{ direction: link.icon && "ltr" }}>{link.text}</span>
+              {link.icon ? link.icon : null}
+              <span style={{ direction: link.icon ? "ltr" : undefined }}>
+                {link.text}
+              </span>
             </Link>
           </li>
         ))}
