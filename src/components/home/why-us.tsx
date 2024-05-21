@@ -42,7 +42,8 @@ export function WhyUs() {
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
               {t("title")}
             </h2>
-            <p className="mt-7 text-xl/7 text-slate-600">{t("subtitle")}</p>
+
+            <p className="mt-7 text-xl text-slate-600">{t("subtitle")}</p>
             <dl className="mt-20 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
               {features.map((feature) => (
                 <div key={feature.name} className="mx-auto flex flex-col">

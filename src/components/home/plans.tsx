@@ -1,8 +1,7 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
-function classNames(...classes: Array<string>) {
-  return classes.filter(Boolean).join(" ");
-}
+import SectionTitle from "./components/sectionTitle";
 
 export default function Plans() {
   const t = useTranslations("home.plans");
@@ -54,9 +53,8 @@ export default function Plans() {
 
   return (
     <div className="relative pt-24 sm:pt-32">
-      <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
-        {t("title")}
-      </h2>
+      <SectionTitle text={t("title")} />
+
       <div className="mx-auto max-w-7xl px-6 lg:mt-12 lg:rounded-2xl lg:p-10 lg:pb-14 lg:shadow-lg">
         {/* Feature comparison (up to lg) */}
         <section
@@ -72,7 +70,7 @@ export default function Plans() {
               <div key={tier.name}>
                 <div className="-mt-px w-72 pt-10 md:w-80">
                   <h3
-                    className={classNames(
+                    className={clsx(
                       "text-lg font-medium leading-6",
                       tier.featured ? "text-primary" : "text-slate-900",
                     )}
@@ -127,7 +125,7 @@ export default function Plans() {
               <div key={tier.name} aria-hidden="true" className="col-span-2">
                 <div className="px-6 pt-10">
                   <p
-                    className={classNames(
+                    className={clsx(
                       "text-lg font-medium leading-6",
                       tier.featured ? "text-primary" : "text-slate-900",
                     )}
