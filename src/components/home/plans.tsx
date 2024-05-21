@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 import SectionTitle from "./components/sectionTitle";
 
-export default function Plans() {
+export function Plans() {
   const t = useTranslations("home.plans");
 
   const plans = {

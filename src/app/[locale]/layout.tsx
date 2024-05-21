@@ -4,7 +4,11 @@ import { type Metadata } from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  unstable_setRequestLocale,
+} from "next-intl/server";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/navbar";
@@ -37,6 +41,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const locales = ["en", "de"];
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -44,8 +54,9 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const messages = await getMessages();
+  unstable_setRequestLocale(locale);
   const direction = useTextDirection(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale} dir={direction}>
