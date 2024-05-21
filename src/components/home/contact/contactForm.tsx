@@ -4,8 +4,8 @@ import { HTTPError } from "ky";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import type z from "zod";
 
+import { contactAction } from "@/app/[locale]/actions/contact";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,15 +20,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { contactSchema } from "@/zodSchema/contact";
 
-import { contactUs } from "../services/contact-service";
-
-type FormData = z.infer<typeof contactSchema>;
-
 const ContactForm = () => {
   const t = useTranslations("home");
   const { toast } = useToast();
 
-  const form = useForm<FormData>({
+  const form = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       full_name: "",
@@ -39,9 +35,9 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = form.handleSubmit(async (data) => {
     try {
-      const response = await contactUs(data);
+      const response = await contactAction(data);
 
       toast({
         title: "Success",
@@ -51,7 +47,7 @@ const ContactForm = () => {
       if (error instanceof HTTPError && error.response.status === 400) {
         const errors = await error.response.json();
 
-        Object.entries(errors.errors).map(([key, value]: any) => {
+        Object.entries(errors.errors).map(([_key, value]: any) => {
           return toast({
             title: "Error",
             description: value[0],
@@ -66,10 +62,10 @@ const ContactForm = () => {
         });
       }
     }
-  };
+  });
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={onSubmit} className="space-y-5">
         <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
           <FormField
             control={form.control}
