@@ -8,7 +8,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/navbar";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/Toaster";
 import useTextDirection from "@/hooks/useTextDirection";
 
 const notoSans = Noto_Sans_Arabic({
