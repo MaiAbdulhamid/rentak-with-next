@@ -26,7 +26,7 @@ export function HowItWorks() {
 
   return (
     <div className="pt-24 sm:pt-32">
-      <div className="conainer mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
+      <div className="container mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
         <SectionTitle text={t("title")} />
         <div className="relative mt-12">
           {steps.map((step) => (

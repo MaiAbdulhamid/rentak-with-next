@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const locales = ["en", "de"];
+const locales = ["en", "ar"];
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
