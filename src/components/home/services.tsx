@@ -1,6 +1,8 @@
 import { BriefcaseIcon, HomeIcon, KeyIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import SectionTitle from "./components/sectionTitle";
+
 type Service = {
   title: string;
   description: string;
@@ -31,9 +33,8 @@ export function Services() {
   return (
     <div className="pt-24 sm:pt-32">
       <div className="conainer mx-auto flex max-w-7xl flex-col items-center justify-stretch px-6 md:px-8">
-        <h2 className="text-center text-3xl font-semibold uppercase leading-7 text-slate-900">
-          {t("title")}
-        </h2>
+        <SectionTitle text={t("title")} />
+
         <p className="mt-5 max-w-2xl text-center text-lg text-slate-600">
           {t("subtitle")}
         </p>
